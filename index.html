@@ -10,9 +10,8 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            /* WALLPAPER GUNUNG PILIHAN LU */
+            /* FIXED WALLPAPER GUNUNG DARK */
             background-image: url('https://img.freepik.com/premium-photo/dark-mountains-images-background-copy-space_1179130-779397.jpg?semt=ais_hybrid&w=740&q=80'); 
-            
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -27,13 +26,13 @@
             overflow-x: hidden;
         }
 
-        /* OVERLAY GELAP AGAR TEKS TETEP JELAS */
+        /* OVERLAY GELAP AGAR KONTEN MENONJOL */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); 
+            background: rgba(0, 0, 0, 0.6); 
             z-index: 0;
         }
 
@@ -84,7 +83,7 @@
         .link-card i { font-size: 1.3rem; width: 35px; text-align: center; }
         .link-card span { flex-grow: 1; margin-left: 12px; font-size: 0.95rem; }
         
-        .link-card:hover { 
+        .link-card:hover:not(.empty-slot) { 
             background: rgba(255, 255, 255, 0.1); 
             border-color: #00f2ff; 
             box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
@@ -96,7 +95,13 @@
         .fa-github { color: #ffffff; }
         .fa-hourglass-start { color: #888; }
 
-        .empty-slot { opacity: 0.4; cursor: default; border-style: dashed; }
+        /* SLOT KOSONG STYLE */
+        .empty-slot { 
+            opacity: 0.4; 
+            cursor: default; 
+            border-style: dashed; 
+            background: rgba(255, 255, 255, 0.02);
+        }
         
         .footer { 
             margin-top: 40px; 
@@ -123,12 +128,6 @@
                 <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
 
-            <a href="https://zenithontop.github.io/muzik/" target="_blank" class="link-card">
-                <i class="fab fa-github"></i>
-                <span>Website | Zenith Muzik Player</span>
-                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
-            </a>
-
             <a href="https://zenithontop.github.io/Linktree/" target="_blank" class="link-card">
                 <i class="fab fa-github"></i>
                 <span>Website | Zen Linktree</span>
@@ -140,6 +139,11 @@
                 <span>Website | Zenith Custom LinkTree</span>
                 <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
+
+            <div class="link-card empty-slot">
+                <i class="fas fa-hourglass-start"></i>
+                <span>[ Haven't Done Anything ]</span>
+            </div>
 
             <div class="link-card empty-slot">
                 <i class="fas fa-hourglass-start"></i>
