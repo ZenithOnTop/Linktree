@@ -10,60 +10,35 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            background: #000; 
+            /* BACKGROUND BARU: Dark Mesh Gradient */
+            background: radial-gradient(circle at top left, #1a1a2e 0%, #0f0c29 50%, #000000 100%);
+            background-attachment: fixed;
             color: white; 
             font-family: 'Poppins', sans-serif; 
-            overflow: hidden; 
+            overflow-x: hidden; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            height: 100vh; 
+            min-height: 100vh; 
             width: 100vw;
         }
 
-        /* FIXED VIDEO BACKGROUND */
-        .video-background {
+        /* Efek tambahan biar background gak flat */
+        body::before {
+            content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Efek bintik bintang halus */
+            opacity: 0.2;
+            z-index: 0;
             pointer-events: none;
-            overflow: hidden;
-        }
-
-        .video-background iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
-            transform: translate(-50%, -50%);
-        }
-
-        @media (min-aspect-ratio: 16/9) {
-            .video-background iframe { width: 100vw; height: 56.25vw; }
-        }
-
-        @media (max-aspect-ratio: 16/9) {
-            .video-background iframe { width: 177.78vh; height: 100vh; }
-        }
-
-        .video-overlay { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%); 
-            z-index: -1; 
         }
 
         .container { 
             width: 100%; 
             max-width: 480px; 
-            padding: 40px 25px; 
+            padding: 60px 25px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -72,6 +47,7 @@
         }
 
         .profile { text-align: center; margin-bottom: 40px; }
+        
         .logo-text { 
             font-family: 'Orbitron', sans-serif; 
             font-size: 2.3rem; 
@@ -79,53 +55,50 @@
             background: linear-gradient(90deg, #00f2ff, #bc13fe); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
-            text-shadow: 0 0 20px rgba(188, 19, 254, 0.6); 
+            text-shadow: 0 0 20px rgba(188, 19, 254, 0.4); 
             margin-bottom: 5px; 
             text-transform: uppercase; 
         }
+        
         .sub-text { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0.7; }
 
-        .links-group { width: 100%; display: flex; flex-direction: column; gap: 14px; }
+        .links-group { width: 100%; display: flex; flex-direction: column; gap: 16px; }
+        
         .link-card { 
-            background: rgba(255, 255, 255, 0.04); 
+            background: rgba(255, 255, 255, 0.05); 
             backdrop-filter: blur(15px); 
             -webkit-backdrop-filter: blur(15px); 
             border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 14px; 
-            padding: 18px 22px; 
+            border-radius: 16px; 
+            padding: 20px 24px; 
             text-decoration: none; 
             color: white; 
-            transition: 0.3s all ease; 
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
         }
 
-        .link-card i { font-size: 1.2rem; width: 35px; text-align: center; }
-        .link-card span { flex-grow: 1; margin-left: 12px; font-size: 0.9rem; }
+        .link-card i { font-size: 1.3rem; width: 35px; text-align: center; }
+        .link-card span { flex-grow: 1; margin-left: 12px; font-size: 0.95rem; font-weight: 400; }
         
         .link-card:hover { 
-            background: rgba(0, 242, 255, 0.1); 
+            background: rgba(255, 255, 255, 0.08); 
             border-color: #00f2ff; 
-            transform: scale(1.02); 
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+            transform: translateY(-3px); 
         }
 
         /* WARNA IKON */
         .fa-youtube { color: #ff0000; }
-        .fa-github { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
-        .fa-hourglass-start { color: #555; }
+        .fa-github { color: #ffffff; }
+        .fa-hourglass-start { color: #888; }
 
-        .empty-slot { opacity: 0.3; cursor: default; }
-        .footer { margin-top: 30px; font-family: 'Orbitron'; font-size: 0.6rem; opacity: 0.4; letter-spacing: 2px; }
+        .empty-slot { opacity: 0.4; cursor: default; border-style: dashed; }
+        .footer { margin-top: 40px; font-family: 'Orbitron'; font-size: 0.65rem; opacity: 0.4; letter-spacing: 2px; }
     </style>
 </head>
 <body>
-
-    <div class="video-background">
-        <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&playlist=jfKfPfyJRdk&iv_load_policy=3&rel=0&disablekb=1" frameborder="0"></iframe>
-    </div>
-    
-    <div class="video-overlay"></div>
 
     <div class="container">
         <div class="profile">
@@ -137,31 +110,30 @@
             <a href="https://www.youtube.com/@ZenithMc10" target="_blank" class="link-card">
                 <i class="fab fa-youtube"></i>
                 <span>YouTube | Zenith</span>
-                <i class="fas fa-arrow-right" style="font-size: 0.7rem; opacity: 0.3;"></i>
+                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
 
             <a href="https://zenithontop.github.io/muzik/" target="_blank" class="link-card">
                 <i class="fab fa-github"></i>
                 <span>Website | Zenith Muzik Player</span>
-                <i class="fas fa-arrow-right" style="font-size: 0.7rem; opacity: 0.3;"></i>
+                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
 
             <a href="https://zenithontop.github.io/Linktree/" target="_blank" class="link-card">
                 <i class="fab fa-github"></i>
                 <span>Website | Zen Linktree</span>
-                <i class="fas fa-arrow-right" style="font-size: 0.8rem; opacity: 0.3;"></i>
+                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
 
             <a href="https://zenithontop.github.io/CustomLinkTree/" target="_blank" class="link-card">
                 <i class="fab fa-github"></i>
                 <span>Website | Zenith Custom LinkTree</span>
-                <i class="fas fa-arrow-right" style="font-size: 0.7rem; opacity: 0.3;"></i>
+                <i class="fas fa-external-link-alt" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
 
             <div class="link-card empty-slot">
                 <i class="fas fa-hourglass-start"></i>
                 <span>[ Haven't Done Anything ]</span>
-                <i class="fas fa-arrow-right" style="font-size: 0.7rem; opacity: 0;"></i>
             </div>
         </div>
 
